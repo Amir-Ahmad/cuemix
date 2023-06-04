@@ -1,0 +1,40 @@
+# test that multiple objects are patched
+
+-- input.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    pod: first-pod
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-pod
+  labels:
+    pod: second-pod
+
+-- patch.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    environment: production
+
+-- output.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    pod: first-pod
+    environment: production
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-pod
+  labels:
+    pod: second-pod
+    environment: production

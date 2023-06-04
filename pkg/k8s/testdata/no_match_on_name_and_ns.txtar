@@ -1,0 +1,12 @@
+-- object.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap
+  namespace: test-namespace
+
+-- target.yaml --
+name: another-configmap
+namespace: another-namespace
+
+-- no_match.yaml --

@@ -1,0 +1,13 @@
+-- object.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  labels:
+    app: my-app
+
+-- target.yaml --
+name: my-pod
+labelSelector: app=another-app
+
+-- no_match.yaml --

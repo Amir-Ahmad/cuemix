@@ -1,0 +1,27 @@
+# test that an error is raised on no match
+
+-- input.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: staging
+  name: staging-pod
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: production
+  name: production-pod
+
+
+-- patch.yaml --
+target:
+  kind: Deployment
+patch:
+  - op: remove
+    path: "/metadata/labels/env"
+
+-- error.yaml --

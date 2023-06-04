@@ -1,0 +1,40 @@
+# test that multiple objects are patched
+
+-- input.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: staging
+  name: staging-pod
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: production
+  name: production-pod
+
+-- patch.yaml --
+target:
+  kind: Pod
+patch:
+  - op: "replace"
+    path: "/metadata/labels/env"
+    value: "development"
+
+-- output.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: development
+  name: staging-pod
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: development
+  name: production-pod

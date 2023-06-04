@@ -1,0 +1,10 @@
+-- object.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+
+-- target.yaml --
+name: another-pod
+
+-- no_match.yaml --

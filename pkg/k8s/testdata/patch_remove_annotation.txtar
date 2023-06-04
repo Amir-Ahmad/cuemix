@@ -1,0 +1,26 @@
+-- input.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  annotations:
+    app: my-app
+data:
+  a_var: some_value
+
+-- patch.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  annotations:
+    app: null
+
+-- output.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  annotations: {}
+data:
+  a_var: some_value

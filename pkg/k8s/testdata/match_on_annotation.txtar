@@ -1,0 +1,11 @@
+-- object.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  annotations:
+    env: staging
+
+-- target.yaml --
+name: my-pod
+annotationSelector: env=staging

@@ -1,0 +1,25 @@
+-- input.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  a_var: some_value
+  another_var: another_value
+
+-- patch.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  a_var: updated_value
+
+-- output.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  a_var: updated_value
+  another_var: another_value

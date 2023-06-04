@@ -1,0 +1,23 @@
+# Basic test for removing a label
+
+-- input.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    env: staging
+  name: staging-pod
+
+-- patch.yaml --
+target:
+  kind: Pod
+patch:
+  - op: remove
+    path: "/metadata/labels/env"
+
+-- output.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  labels: {}
+  name: staging-pod

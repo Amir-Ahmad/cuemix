@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello
+  name: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - image: nginxdemos/hello
+        name: hello
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello2
+  name: hello2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello2
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: hello2
+    spec:
+      containers:
+      - image: nginxdemos/hello
+        name: hello2

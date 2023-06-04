@@ -1,0 +1,25 @@
+# test that an error is raised on no match
+
+-- input.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    pod: first-pod
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-pod
+  labels:
+    pod: second-pod
+
+-- patch.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    environment: production
+
+-- error.yaml --

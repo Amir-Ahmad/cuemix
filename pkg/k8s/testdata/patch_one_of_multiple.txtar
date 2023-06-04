@@ -1,0 +1,40 @@
+# test that only one of the same type is patched based on name
+
+-- input.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    pod: first-pod
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-pod
+  labels:
+    pod: second-pod
+
+-- patch.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    environment: production
+
+-- output.yaml --
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    pod: first-pod
+    environment: production
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-pod
+  labels:
+    pod: second-pod

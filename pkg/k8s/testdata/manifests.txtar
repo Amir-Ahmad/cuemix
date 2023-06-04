@@ -1,0 +1,19 @@
+-- test1.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap-1
+data:
+  key: value
+
+-- test2.yaml --
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment-1
+
+-- test3.yaml --
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-service-1

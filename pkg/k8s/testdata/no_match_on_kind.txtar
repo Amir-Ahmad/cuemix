@@ -1,0 +1,11 @@
+-- object.yaml --
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+
+-- target.yaml --
+kind: Pod
+name: my-deployment
+
+-- no_match.yaml --

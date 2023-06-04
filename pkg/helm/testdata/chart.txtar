@@ -1,0 +1,25 @@
+-- Chart.yaml --
+apiVersion: 1.0.0
+version: 1.0.0
+name: test-chart
+
+-- templates/test1.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test1
+  namespace: "{{ .Release.Namespace }}"
+data:
+  key: "{{ .Values.cmkey }}"
+
+-- templates/test2.yaml --
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: test2
+
+-- crds/dummycrd.yaml --
+apiVersion: apiextensions.k8s.io/v1
+kind: DummyCRD
+metadata:
+  name: adomain.dummy.crd

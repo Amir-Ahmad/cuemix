@@ -1,0 +1,12 @@
+-- object.yaml --
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+
+-- target.yaml --
+group: apps
+version: v1beta1
+name: my-deployment
+
+-- no_match.yaml --

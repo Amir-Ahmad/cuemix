@@ -1,0 +1,8 @@
+-- object.yaml --
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap-1
+
+-- target.yaml --
+name: test-configmap-1
